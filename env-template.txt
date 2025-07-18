@@ -1,0 +1,4 @@
+# Copiez ce contenu dans un fichier .env à la racine du projet React
+
+# Backend URL
+VITE_BACKEND_URL=http://localhost:5000 
