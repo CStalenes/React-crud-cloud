@@ -8,10 +8,15 @@ export default defineConfig({
     port: 5183,
     proxy: {
       '/api': {
-        target: 'http://localhost:5183',
+        target: 'http://localhost:5000',  // Port du backend corrigé
         changeOrigin: true,
         secure: false
       }
     }
+  },
+  // Configuration pour Azure Static Web Apps
+  build: {
+    outDir: 'dist',
+    sourcemap: false
   }
 })

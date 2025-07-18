@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Database configuration
+// Database configuration for MySQL Azure
 const sequelize = new Sequelize({
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
@@ -13,6 +13,16 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD || '',
   dialect: 'mysql',
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
+  dialectOptions: {
+    // Configuration SSL pour MySQL Azure
+    ssl: process.env.DB_HOST && process.env.DB_HOST.includes('mysql.database.azure.com') ? {
+      require: true,
+      rejectUnauthorized: false
+    } : false,
+    connectTimeout: 60000,
+    acquireTimeout: 60000,
+    timeout: 60000
+  },
   pool: {
     max: 10,
     min: 0,
