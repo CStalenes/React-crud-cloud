@@ -22,7 +22,7 @@ DB_USER=mysqladmin
 DB_PASSWORD=P@ssw0rd123!
 
 # Configuration CORS
-FRONTEND_URL=http://localhost:5183
+FRONTEND_URL=http://52.169.106.107:5193
 
 # Configuration Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
@@ -60,7 +60,7 @@ function sleep(ms) {
 // Fonction pour tester la connexion au serveur
 async function testServer() {
   try {
-    const response = await fetch('http://localhost:5150/api/products');
+    const response = await fetch('http://52.169.106.107:5170/api/products');
     return response.ok;
   } catch (error) {
     return false;
@@ -112,8 +112,8 @@ async function main() {
     if (connected) {
       console.log('✅ Serveur démarré avec succès!\n');
       console.log('🌐 URLs disponibles:');
-      console.log('   - API: http://localhost:5150/api/products');
-      console.log('   - Uploads: http://localhost:5150/uploads/');
+      console.log('   - API: http://52.169.106.107:5170/api/products');
+      console.log('   - Uploads: http://52.169.106.107:5170/uploads/');
       console.log('');
       console.log('📋 Configuration:');
       console.log('   - Host: mysql-app-sc.mysql.database.azure.com');

@@ -44,7 +44,7 @@ if (showFirewallHelp) {
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur pour Azure
-PORT=${isProduction ? '5193' : '5183'}
+PORT=${isProduction ? '5170' : '5170'}
 NODE_ENV=${isProduction ? 'production' : 'development'}
 
 # Configuration de la base de données MySQL Azure
@@ -94,7 +94,7 @@ try {
   console.log('   - Host: mysql-app-sc.mysql.database.azure.com');
   console.log('   - Database: appdb');
   console.log('   - User: mysqladmin');
-  console.log(`   - Frontend URL: ${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://localhost:5193'}`);
+  console.log(`   - Frontend URL: ${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://52.169.106.107:5193'}`);
   console.log(`   - NODE_ENV: ${isProduction ? 'production' : 'development'}`);
   console.log('   - SSL: activé');
   console.log('');
@@ -109,10 +109,10 @@ try {
   console.log('   node setup-azure.js --help-firewall');
   console.log('');
   console.log('🚀 Prochaines étapes:');
-  console.log('   1. Configurez le firewall (voir --help-firewall)');
-  console.log('   2. npm install');
-  console.log('   3. npm start');
-  console.log('   4. Testez http://52.169.106.107:5193');
+  console.log('   1. Déployez les règles Terraform: cd TerraformUse && terraform apply');
+  console.log('   2. Connectez-vous à la VM: ssh azureuser@52.169.106.107');
+  console.log('   3. Transférez et démarrez le projet');
+  console.log('   4. Testez http://52.169.106.107:5170/health');
   console.log('');
   console.log('🌐 Pour Azure:');
   console.log('   - Azure App Service gère automatiquement les ports');
