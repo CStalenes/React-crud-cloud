@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { VITE_BACKEND_URL } from "../App";
+import { VITE_BACKEND_URL } from "../config/constants";
 
 const EditPage = () => {
     let { id } = useParams();
@@ -34,7 +34,7 @@ const EditPage = () => {
         }
     };
 
-    const getProduct = async () => {
+    const getProduct = useCallback(async () => {
         setIsLoading(true);
         try{
             const response = await axios.get(`${VITE_BACKEND_URL}/api/products/${id}`);
@@ -49,7 +49,7 @@ const EditPage = () => {
             setIsLoading(false);
             toast.error(error.response?.data?.message || 'Error loading product');
         }
-    }
+    }, [id]);
 
     const updateProduct = async (e) => {
         e.preventDefault();
@@ -82,7 +82,7 @@ const EditPage = () => {
 
     useEffect(() => {
         getProduct();
-    }, [])
+    }, [getProduct])
 
     return (
         <div className="max-w-lg bg-white shadow-lg mx-auto p-7 rounded mt-6">

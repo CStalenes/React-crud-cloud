@@ -6,8 +6,6 @@ import EditPage from "./pages/EditPage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
 const App = () => {
   return (
     <div>

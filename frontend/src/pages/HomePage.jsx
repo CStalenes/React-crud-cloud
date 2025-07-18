@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "../components/Product"
 import { Link } from "react-router-dom";
-import { VITE_BACKEND_URL } from "../App";
+import { VITE_BACKEND_URL } from "../config/constants";
 
 const HomePage = () => {
 
