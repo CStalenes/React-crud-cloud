@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import process from 'process';
 
 // Configuration des tests
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://localhost:5150';
 const TIMEOUT = 5000;
 
 // Fonction pour faire des requêtes HTTP

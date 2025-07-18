@@ -44,7 +44,7 @@ if (showFirewallHelp) {
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur pour Azure
-PORT=${isProduction ? '5000' : '5183'}
+PORT=${isProduction ? '5150' : '5183'}
 NODE_ENV=${isProduction ? 'production' : 'development'}
 
 # Configuration de la base de données MySQL Azure
@@ -99,7 +99,7 @@ try {
   console.log('   - SSL: activé');
   console.log('');
   console.log('🔧 Ports configurés:');
-  console.log('   - Backend: http://localhost:5000');
+  console.log('   - Backend: http://localhost:5150');
   console.log('   - Frontend: http://localhost:5183');
   console.log('');
   console.log('⚠️  ATTENTION : Erreur de connexion possible !');
@@ -112,7 +112,7 @@ try {
   console.log('   1. Configurez le firewall (voir --help-firewall)');
   console.log('   2. npm install');
   console.log('   3. npm start');
-  console.log('   4. Testez http://localhost:5000');
+  console.log('   4. Testez http://localhost:5150');
   console.log('');
   console.log('🌐 Pour Azure:');
   console.log('   - Azure App Service gère automatiquement les ports');

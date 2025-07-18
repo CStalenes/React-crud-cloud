@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur
-PORT=5000
+PORT=5150
 NODE_ENV=development
 
 # Configuration de la base de données MySQL Azure
@@ -60,7 +60,7 @@ function sleep(ms) {
 // Fonction pour tester la connexion au serveur
 async function testServer() {
   try {
-    const response = await fetch('http://localhost:5000/api/products');
+    const response = await fetch('http://localhost:5150/api/products');
     return response.ok;
   } catch (error) {
     return false;
@@ -112,14 +112,14 @@ async function main() {
     if (connected) {
       console.log('✅ Serveur démarré avec succès!\n');
       console.log('🌐 URLs disponibles:');
-      console.log('   - API: http://localhost:5000/api/products');
-      console.log('   - Uploads: http://localhost:5000/uploads/');
+      console.log('   - API: http://localhost:5150/api/products');
+      console.log('   - Uploads: http://localhost:5150/uploads/');
       console.log('');
       console.log('📋 Configuration:');
       console.log('   - Host: mysql-app-sc.mysql.database.azure.com');
       console.log('   - Database: appdb');
       console.log('   - User: mysqladmin');
-      console.log('   - Port: 5000');
+      console.log('   - Port: 5150');
       console.log('');
       console.log('🔧 Commandes utiles:');
       console.log('   - npm run dev    # Mode développement');

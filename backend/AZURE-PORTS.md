@@ -2,7 +2,7 @@
 
 ## 🔧 Ports en Développement Local
 
-- **Backend**: `http://localhost:5000`
+- **Backend**: `http://localhost:5150`
 - **Frontend**: `http://localhost:5183`
 
 ## 🌐 Ports sur Azure
@@ -10,7 +10,7 @@
 ### Backend (Azure App Service)
 - Azure assigne automatiquement un port via la variable `process.env.PORT`
 - **Ne pas** hardcoder le port dans le code
-- Utiliser: `const PORT = process.env.PORT || 5000`
+- Utiliser: `const PORT = process.env.PORT || 5150`
 
 ### Frontend (Azure Static Web Apps)
 - Pas de port spécifique (utilise HTTPS sur le domaine Azure)
@@ -47,8 +47,8 @@ node setup-azure.js --prod --force
 ## 🔍 Vérification des Ports
 
 1. **Vite (Frontend)**: Configuré sur port 5183
-2. **Express (Backend)**: Configuré sur port 5000
-3. **Proxy**: Frontend → Backend (5183 → 5000)
+2. **Express (Backend)**: Configuré sur port 5150
+3. **Proxy**: Frontend → Backend (5183 → 5150)
 
 ## ⚠️ Important pour Azure
 
