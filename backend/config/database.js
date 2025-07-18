@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   dialect: 'mysql',
-  logging: process.env.NODE_ENV === 'development' ? console.log : false,
+  logging: process.env.NODE_ENV === 'production' ? console.log : false,
   dialectOptions: {
     // Configuration SSL pour MySQL Azure
     ssl: process.env.DB_HOST && process.env.DB_HOST.includes('mysql.database.azure.com') ? {

@@ -44,7 +44,7 @@ if (showFirewallHelp) {
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur pour Azure
-PORT=${isProduction ? '5150' : '5183'}
+PORT=${isProduction ? '5193' : '5183'}
 NODE_ENV=${isProduction ? 'production' : 'development'}
 
 # Configuration de la base de données MySQL Azure
@@ -55,7 +55,7 @@ DB_USER=mysqladmin
 DB_PASSWORD=P@ssw0rd123!
 
 # Configuration CORS - URL de votre frontend
-FRONTEND_URL=${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://localhost:5183'}
+FRONTEND_URL=${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://52.169.106.107:5193'}
 
 # Configuration Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
@@ -94,13 +94,13 @@ try {
   console.log('   - Host: mysql-app-sc.mysql.database.azure.com');
   console.log('   - Database: appdb');
   console.log('   - User: mysqladmin');
-  console.log(`   - Frontend URL: ${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://localhost:5183'}`);
+  console.log(`   - Frontend URL: ${isProduction ? 'https://frontend-app-sc.azurewebsites.net' : 'http://localhost:5193'}`);
   console.log(`   - NODE_ENV: ${isProduction ? 'production' : 'development'}`);
   console.log('   - SSL: activé');
   console.log('');
   console.log('🔧 Ports configurés:');
-  console.log('   - Backend: http://localhost:5150');
-  console.log('   - Frontend: http://localhost:5183');
+  console.log('   - Backend: http://52.169.106.107:5170');
+  console.log('   - Frontend: http://52.169.106.107:5193');
   console.log('');
   console.log('⚠️  ATTENTION : Erreur de connexion possible !');
   console.log('   Si vous obtenez une erreur ETIMEDOUT, votre IP n\'est pas autorisée.');
@@ -112,7 +112,7 @@ try {
   console.log('   1. Configurez le firewall (voir --help-firewall)');
   console.log('   2. npm install');
   console.log('   3. npm start');
-  console.log('   4. Testez http://localhost:5150');
+  console.log('   4. Testez http://52.169.106.107:5193');
   console.log('');
   console.log('🌐 Pour Azure:');
   console.log('   - Azure App Service gère automatiquement les ports');
