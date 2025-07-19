@@ -44,7 +44,7 @@ if (showFirewallHelp) {
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur pour Azure
-PORT=${isProduction ? '5170' : '5170'}
+PORT=${isProduction ? '5193' : '5170'}
 NODE_ENV=${isProduction ? 'production' : 'development'}
 
 # Configuration de la base de données MySQL Azure

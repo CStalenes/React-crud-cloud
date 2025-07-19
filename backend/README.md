@@ -42,18 +42,18 @@ cp .env.example .env
 4. **Modifier le fichier .env**
 ```bash
 # Server Configuration
-PORT=5000
-NODE_ENV=development
+PORT=5193
+NODE_ENV=production
 
 # Database Configuration
-DB_HOST=localhost
+DB_HOST=mysql-app-sc.mysql.database.azure.com
 DB_PORT=3306
-DB_NAME=react_crud_db
-DB_USER=root
-DB_PASSWORD=your_password
+DB_NAME=appdb
+DB_USER=mysqladmin
+DB_PASSWORD=P@ssw0rd123!
 
 # CORS Configuration
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=http://52.169.106.107:5193
 ```
 
 5. **Créer la base de données**
@@ -127,7 +127,7 @@ npm start
 
 #### Créer un produit avec image
 ```bash
-curl -X POST http://localhost:5000/api/products \
+curl -X POST http://52.169.106.107:5170/api/products \
   -F "name=Nouveau Produit" \
   -F "quantity=10" \
   -F "price=99.99" \
@@ -136,7 +136,7 @@ curl -X POST http://localhost:5000/api/products \
 
 #### Mettre à jour un produit avec nouvelle image
 ```bash
-curl -X PUT http://localhost:5000/api/products/1 \
+curl -X PUT http://52.169.106.107:5170/api/products/1 \
   -F "name=Produit Modifié" \
   -F "price=149.99" \
   -F "image=@/path/to/new-image.jpg"
@@ -144,7 +144,7 @@ curl -X PUT http://localhost:5000/api/products/1 \
 
 #### Accéder à une image
 ```bash
-curl http://localhost:5000/uploads/product-1640995200000-123456789.webp
+curl http://52.169.106.107:5193/uploads/product-1640995200000-123456789.webp
 ```
 
 ## 📊 Structure des données
@@ -229,7 +229,7 @@ sequelize.authenticate()
 ls -la uploads/
 
 # Tester l'upload
-curl -X POST http://localhost:5000/api/products \
+curl -X POST http://52.169.106.107:5170/api/products \
   -F "name=Test" \
   -F "quantity=1" \
   -F "price=10" \

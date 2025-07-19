@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration pour MySQL Azure
 const envContent = `# Configuration du serveur
-PORT=5150
+PORT=5170
 NODE_ENV=development
 
 # Configuration de la base de données MySQL Azure
@@ -22,7 +22,7 @@ DB_USER=mysqladmin
 DB_PASSWORD=P@ssw0rd123!
 
 # Configuration CORS
-FRONTEND_URL=http://52.169.106.107:5193
+BACKEND_URL=http://52.169.106.107:5170
 
 # Configuration Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
@@ -119,7 +119,7 @@ async function main() {
       console.log('   - Host: mysql-app-sc.mysql.database.azure.com');
       console.log('   - Database: appdb');
       console.log('   - User: mysqladmin');
-      console.log('   - Port: 5150');
+      console.log('   - Port: 5170');
       console.log('');
       console.log('🔧 Commandes utiles:');
       console.log('   - npm run dev    # Mode développement');
