@@ -3,44 +3,44 @@
 # Script de déploiement sur VM Azure
 # Utilisation: ./deploy-to-vm.sh
 
-echo "🚀 Déploiement sur VM Azure (52.169.106.107)"
+echo "Déploiement sur VM Azure (52.169.106.107)"
 
 # Variables
 VM_IP="52.169.106.107"
 VM_USER="azureuser"
 
 # Vérifier la connectivité SSH
-echo "🔍 Vérification de la connectivité SSH..."
+echo "Vérification de la connectivité SSH..."
 if ! ssh -o BatchMode=yes -o ConnectTimeout=5 $VM_USER@$VM_IP exit 2>/dev/null; then
-    echo "❌ Impossible de se connecter à la VM Azure"
+    echo "Impossible de se connecter à la VM Azure"
     echo "Vérifiez que vous avez accès SSH à $VM_USER@$VM_IP"
     exit 1
 fi
 
-echo "✅ Connexion SSH établie"
+echo "Connexion SSH établie"
 
 # Installer Node.js sur la VM
-echo "📦 Installation de Node.js sur la VM..."
+echo "Installation de Node.js sur la VM..."
 ssh $VM_USER@$VM_IP << 'EOF'
 # Vérifier si Node.js est déjà installé
 if command -v node &> /dev/null; then
-    echo "✅ Node.js déjà installé: $(node --version)"
+    echo "Node.js déjà installé: $(node --version)"
 else
-    echo "📦 Installation de Node.js..."
+    echo "Installation de Node.js..."
     curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
     sudo apt-get install -y nodejs
-    echo "✅ Node.js installé: $(node --version)"
+    echo "Node.js installé: $(node --version)"
 fi
 
 # Installer MySQL client
 if ! command -v mysql &> /dev/null; then
-    echo "📦 Installation du client MySQL..."
+    echo "Installation du client MySQL..."
     sudo apt-get install -y mysql-client-core-8.0
 fi
 EOF
 
 # Créer le répertoire backend et le fichier .env
-echo "⚙️  Configuration de l'environnement backend..."
+echo "Configuration de l'environnement backend..."
 ssh $VM_USER@$VM_IP << 'EOF'
 # Créer le répertoire backend
 mkdir -p ~/backend
@@ -60,7 +60,7 @@ DB_SSL=true
 WEBSITE_NODE_DEFAULT_VERSION=18-lts
 ENVEOF
 
-echo "✅ Fichier .env créé"
+echo "Fichier .env créé"
 
 # Créer un package.json minimal
 cat > package.json << 'PKGEOF'
@@ -87,15 +87,15 @@ cat > package.json << 'PKGEOF'
 }
 PKGEOF
 
-echo "✅ Package.json créé"
+echo "Package.json créé"
 EOF
 
 # Copier les fichiers du projet
-echo "📂 Copie des fichiers du projet..."
+echo "Copie des fichiers du projet..."
 scp -r React-CRUD/backend/* $VM_USER@$VM_IP:~/backend/
 
 # Installer les dépendances et démarrer le serveur
-echo "📦 Installation des dépendances..."
+echo " Installation des dépendances..."
 ssh $VM_USER@$VM_IP << 'EOF'
 cd ~/backend
 npm install
@@ -112,7 +112,7 @@ echo "  curl http://52.169.106.107:5170/api/products"
 EOF
 
 # Créer un script de démarrage permanent
-echo "⚙️  Création du script de démarrage..."
+echo "Création du script de démarrage..."
 ssh $VM_USER@$VM_IP << 'EOF'
 cd ~/backend
 
@@ -120,18 +120,18 @@ cd ~/backend
 cat > start-backend.sh << 'STARTEOF'
 #!/bin/bash
 cd ~/backend
-echo "🚀 Démarrage du backend sur port 5170..."
+echo "Démarrage du backend sur port 5170..."
 npm start
 STARTEOF
 
 chmod +x start-backend.sh
 
-echo "✅ Script de démarrage créé: ~/backend/start-backend.sh"
+echo "Script de démarrage créé: ~/backend/start-backend.sh"
 EOF
 
-echo "✅ Déploiement terminé !"
+echo "Déploiement terminé !"
 echo ""
-echo "🔗 Prochaines étapes:"
+echo "Prochaines étapes:"
 echo "1. Connectez-vous à la VM:"
 echo "   ssh azureuser@52.169.106.107"
 echo ""
